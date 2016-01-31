@@ -28,28 +28,28 @@ library(dplyr)
 
 ## Getting  the data
 dataSetUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-if (!file.exists("./data/Dataset.zip")){
-  download.file(dataSetUrl, destfile= "data/Dataset.zip", method = "curl")
+if (!file.exists("./Dataset.zip")){
+  download.file(dataSetUrl, destfile= "./Dataset.zip", method = "curl")
   dateDownloaded <- date()
 }
-if (!file.exists("./data/UCI HAR DATASET")){
-  unzip(zipfile="./data/Dataset.zip",exdir="./data/")
+if (!file.exists("./UCI HAR DATASET")){
+  unzip(zipfile="./Dataset.zip",exdir=".")
 }
 
 ### Reading data tables (train and test)
-dataTrainTable <- read.table("./data/UCI HAR DATASET/train/X_train.txt",sep="", header=FALSE)
-dataTestTable <- read.table("./data/UCI HAR DATASET/test/X_test.txt",sep="", header=FALSE)
+dataTrainTable <- read.table("./UCI HAR DATASET/train/X_train.txt",sep="", header=FALSE)
+dataTestTable <- read.table("./UCI HAR DATASET/test/X_test.txt",sep="", header=FALSE)
 
 ### Reading subject tables (train and test)
-subjectTrainTable <-read.table("./data/UCI HAR DATASET/train/subject_train.txt",sep="", header=FALSE)  
-subjectTestTable <-read.table("./data/UCI HAR DATASET/test/subject_test.txt",sep="", header=FALSE)  
+subjectTrainTable <-read.table("./UCI HAR DATASET/train/subject_train.txt",sep="", header=FALSE)  
+subjectTestTable <-read.table("./UCI HAR DATASET/test/subject_test.txt",sep="", header=FALSE)  
 
 ### Reading activity tables (train and test)
-activityTrainTable <- read.table("./data/UCI HAR DATASET/train/y_train.txt",sep="", header=FALSE)
-activityTestTable <- read.table("./data/UCI HAR DATASET/test/y_test.txt",sep="", header=FALSE)
+activityTrainTable <- read.table("./UCI HAR DATASET/train/y_train.txt",sep="", header=FALSE)
+activityTestTable <- read.table("./UCI HAR DATASET/test/y_test.txt",sep="", header=FALSE)
 
 ### Reading Features
-featuresNamesTable <- read.table("./data/UCI HAR DATASET/features.txt",sep="", header=FALSE)  
+featuresNamesTable <- read.table("./UCI HAR DATASET/features.txt",sep="", header=FALSE)  
 
 # 1. Merges the training and the test sets to create one data set.
 
@@ -90,7 +90,7 @@ dim(selectedData)
 
 
 # 3. Uses descriptive activity names to name the activities in the data set
-activitiesNames <- read.table("./data/UCI HAR DATASET/activity_labels.txt",sep="", header=FALSE)$V2
+activitiesNames <- read.table("./UCI HAR DATASET/activity_labels.txt",sep="", header=FALSE)$V2
 selectedData$activity <- activitiesNames[selectedData$activity]
 
 unique(selectedData$activity) ## Showing activities into selectedData 

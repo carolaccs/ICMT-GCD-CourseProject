@@ -2,12 +2,17 @@
 ### Ivette C. Martínez
 
 ## 1. Original Data
+The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. This data set, called "From Human Activity Recognition Using Smartphones Data Set" is part of the UCI Repository. 
+
+This dataset, with a full description of it is available at:
+<https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones>
+
 Original Data set is available here:
 <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
 
 
 ## 2. Merged Data Set
-1. To buid the merged data set we use the following files (at "./data/UCI HAR DATASET"):
+1. To buid the merged data set we use the following files (at "./UCI HAR DATASET"):
 
 1.1. For Features data: 
  * "train/X_train.txt"                           

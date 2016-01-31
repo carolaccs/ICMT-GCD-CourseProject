@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">run_analysis.R</h1>
 <h4 class="author"><em>carola</em></h4>
-<h4 class="date"><em>Sat Jan 30 18:35:43 2016</em></h4>
+<h4 class="date"><em>Sun Jan 31 10:21:08 2016</em></h4>
 </div>
 
 
@@ -118,28 +118,28 @@ library(gdata)</code></pre>
 ##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>## Getting  the data
 dataSetUrl &lt;- &quot;https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip&quot;
-if (!file.exists(&quot;./data/Dataset.zip&quot;)){
-  download.file(dataSetUrl, destfile= &quot;data/Dataset.zip&quot;, method = &quot;curl&quot;)
+if (!file.exists(&quot;./Dataset.zip&quot;)){
+  download.file(dataSetUrl, destfile= &quot;./Dataset.zip&quot;, method = &quot;curl&quot;)
   dateDownloaded &lt;- date()
 }
-if (!file.exists(&quot;./data/UCI HAR DATASET&quot;)){
-  unzip(zipfile=&quot;./data/Dataset.zip&quot;,exdir=&quot;./data/&quot;)
+if (!file.exists(&quot;./UCI HAR DATASET&quot;)){
+  unzip(zipfile=&quot;./Dataset.zip&quot;,exdir=&quot;.&quot;)
 }
 
 ### Reading data tables (train and test)
-dataTrainTable &lt;- read.table(&quot;./data/UCI HAR DATASET/train/X_train.txt&quot;,sep=&quot;&quot;, header=FALSE)
-dataTestTable &lt;- read.table(&quot;./data/UCI HAR DATASET/test/X_test.txt&quot;,sep=&quot;&quot;, header=FALSE)
+dataTrainTable &lt;- read.table(&quot;./UCI HAR DATASET/train/X_train.txt&quot;,sep=&quot;&quot;, header=FALSE)
+dataTestTable &lt;- read.table(&quot;./UCI HAR DATASET/test/X_test.txt&quot;,sep=&quot;&quot;, header=FALSE)
 
 ### Reading subject tables (train and test)
-subjectTrainTable &lt;-read.table(&quot;./data/UCI HAR DATASET/train/subject_train.txt&quot;,sep=&quot;&quot;, header=FALSE)  
-subjectTestTable &lt;-read.table(&quot;./data/UCI HAR DATASET/test/subject_test.txt&quot;,sep=&quot;&quot;, header=FALSE)  
+subjectTrainTable &lt;-read.table(&quot;./UCI HAR DATASET/train/subject_train.txt&quot;,sep=&quot;&quot;, header=FALSE)  
+subjectTestTable &lt;-read.table(&quot;./UCI HAR DATASET/test/subject_test.txt&quot;,sep=&quot;&quot;, header=FALSE)  
 
 ### Reading activity tables (train and test)
-activityTrainTable &lt;- read.table(&quot;./data/UCI HAR DATASET/train/y_train.txt&quot;,sep=&quot;&quot;, header=FALSE)
-activityTestTable &lt;- read.table(&quot;./data/UCI HAR DATASET/test/y_test.txt&quot;,sep=&quot;&quot;, header=FALSE)
+activityTrainTable &lt;- read.table(&quot;./UCI HAR DATASET/train/y_train.txt&quot;,sep=&quot;&quot;, header=FALSE)
+activityTestTable &lt;- read.table(&quot;./UCI HAR DATASET/test/y_test.txt&quot;,sep=&quot;&quot;, header=FALSE)
 
 ### Reading Features
-featuresNamesTable &lt;- read.table(&quot;./data/UCI HAR DATASET/features.txt&quot;,sep=&quot;&quot;, header=FALSE)  
+featuresNamesTable &lt;- read.table(&quot;./UCI HAR DATASET/features.txt&quot;,sep=&quot;&quot;, header=FALSE)  
 
 # 1. Merges the training and the test sets to create one data set.
 
@@ -177,7 +177,7 @@ rm(completeTable)
 dim(selectedData)</code></pre>
 <pre><code>## [1] 10299    68</code></pre>
 <pre class="r"><code># 3. Uses descriptive activity names to name the activities in the data set
-activitiesNames &lt;- read.table(&quot;./data/UCI HAR DATASET/activity_labels.txt&quot;,sep=&quot;&quot;, header=FALSE)$V2
+activitiesNames &lt;- read.table(&quot;./UCI HAR DATASET/activity_labels.txt&quot;,sep=&quot;&quot;, header=FALSE)$V2
 selectedData$activity &lt;- activitiesNames[selectedData$activity]
 
 unique(selectedData$activity) ## Showing activities into selectedData </code></pre>
